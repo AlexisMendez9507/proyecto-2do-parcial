@@ -1,22 +1,16 @@
 <?php
-header('Content-Type: application/json');
+include 'db.php';
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "mapa";
+// Obtener todas las ubicaciones de la base de datos
+$sql = "SELECT * FROM locations";
+$result = $conn->query($sql);
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
-    $stmt = $conn->prepare("SELECT nombre, descripcion, lat, lng FROM ubicaciones");
-    $stmt->execute();
-
-    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($results);
-} catch(PDOException $e) {
-    echo json_encode(["error" => $e->getMessage()]);
+$locations = [];
+while ($row = $result->fetch_assoc()) {
+    $locations[] = $row;
 }
-$conn = null;
+
+// Devolver las ubicaciones como JSON
+header('Content-Type: application/json');
+echo json_encode($locations);
 ?>
