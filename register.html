@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <!-- Enlace a Tailwind CSS desde CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h2>Registro</h2>
-    <form action="register.php" method="POST">
-        <label>Usuario:</label>
-        <input type="text" name="username" required>
-        <label>Contraseña:</label>
-        <input type="password" name="password" required>
-        <button type="submit">Registrar</button>
-    </form>
-    <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Crear Cuenta</h2>
+        
+        <!-- Formulario de Registro -->
+        <form action="register.php" method="POST">
+            <div class="mb-4">
+                <label for="username" class="block text-gray-700 font-semibold">Usuario</label>
+                <input type="text" id="username" name="username" class="w-full p-3 border-2 border-gray-300 rounded-md mt-2" placeholder="Elige tu usuario" required>
+            </div>
+            
+            <div class="mb-4">
+                <label for="nombre" class="block text-gray-700 font-semibold">Nombre completo</label>
+                <input type="text" id="nombre" name="nombre" class="w-full p-3 border-2 border-gray-300 rounded-md mt-2" placeholder="Ingresa tu nombre completo" required>
+            </div>
+            
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 font-semibold">Contraseña</label>
+                <input type="password" id="password" name="password" class="w-full p-3 border-2 border-gray-300 rounded-md mt-2" placeholder="Elige una contraseña" required>
+            </div>
+
+            <div class="flex justify-between items-center">
+                <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition duration-300">Registrarse</button>
+                <a href="login.html" class="text-sm text-green-500 hover:text-green-600">¿Ya tienes cuenta? Inicia sesión</a>
+            </div>
+        </form>
+    </div>
+
 </body>
 </html>
